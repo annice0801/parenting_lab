@@ -10,6 +10,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fredoka);
+  --font-zh: var(--font-noto-tc);
+
+  --color-cream: #fbf6ef;
+  --color-cream-soft: #f4ece1;
+  --color-cream-deep: #ece0d0;
+  --color-ink: #4a4038;
+  --color-ink-soft: #7d7164;
+  --color-rose: #d9b7ac;
+  --color-sage: #a3b399;
+  --color-sky: #9fb0bd;
+  --color-clay: #c99a7c;
+  --color-plum: #a98b8c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +36,114 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes happy-jump {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-18px) scale(1.05);
+  }
+  50% {
+    transform: translateY(0) scale(0.95);
+  }
+  70% {
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+@keyframes heart-float {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx, 0px), -70px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.animate-happy-jump {
+  animation: happy-jump 0.6s ease-in-out infinite;
+}
+
+.heart-pop {
+  position: absolute;
+  animation: heart-float 1.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes bear-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  25% {
+    transform: scale(1.18) translateY(-6px);
+  }
+  50% {
+    transform: scale(0.94) translateY(0);
+  }
+  75% {
+    transform: scale(1.1) translateY(-3px);
+  }
+}
+
+.animate-bear-sway {
+  animation: bear-sway 2.6s ease-in-out infinite;
+}
+
+.animate-heart-beat {
+  animation: heart-beat 1.1s ease-in-out infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .animate-bear-sway,
+  .animate-heart-beat,
+  .animate-happy-jump,
+  .heart-pop {
+    animation: none !important;
+  }
 }
