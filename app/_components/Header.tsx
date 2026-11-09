@@ -70,6 +70,12 @@ export default function Header() {
           >
             文章
           </Link>
+          <Link
+            href="/helper"
+            className="text-sm font-medium text-ink-soft transition hover:text-clay"
+          >
+            家長幫手
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -127,6 +133,13 @@ export default function Header() {
               className="rounded-xl px-3 py-2.5 text-ink-soft transition hover:bg-cream-soft hover:text-ink"
             >
               文章
+            </Link>
+            <Link
+              href="/helper"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-xl px-3 py-2.5 text-ink-soft transition hover:bg-cream-soft hover:text-ink"
+            >
+              家長幫手
             </Link>
             {nickname && (
               <p className="px-3 pt-2 text-sm text-ink-soft">
